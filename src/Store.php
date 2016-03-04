@@ -34,22 +34,34 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        static function getAll()
+		static function find($search_id)
+		{
+			$found_store = null;
+			$all_stores = Store::getAll();
+			foreach($all_stores as $store) {
+				if ($search_id == $store->getId()){
+					$found_store = $store;
+				}
+			}
+			return $found_store;
+		}
 
-        {//gets every single store
-    			$returned_stores = array();
-    			$all_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
-    			foreach ($all_stores as $store) {
-    				$id = $store['id'];
-    				$name = $store['name'];
-    				$new_store = new Store($id, $name);
-                    array_push($returned_stores, $new_store);
-    			}
-                return $returned_stores;
-    		}
+		static function getAll()
+		//gets every single store
+        {
+			$returned_stores = array();
+			$all_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
+			foreach ($all_stores as $store) {
+				$id = $store['id'];
+				$name = $store['name'];
+				$new_store = new Store($id, $name);
+                array_push($returned_stores, $new_store);
+			}
+            return $returned_stores;
+		}
 
         static function deleteAll()
-
+		//nuclear option for stores
         {
-    			$GLOBALS['DB']->exec("DELETE FROM stores;");
-    		}
+    		$GLOBALS['DB']->exec("DELETE FROM stores;");
+    	}
