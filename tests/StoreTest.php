@@ -121,27 +121,27 @@
             $this->assertEquals($test_store, $result);
         }
 
-        // function testDelete()
-		//
-		// 		{  //delete one Store
-		// 			  //Arrange
-        //     $name = "Foot Locker";
-        //     $id = 1;
-        //     $test_store = new Store($id, $name);
-        //     $test_store->save();
-		//
-        //     $name2 = "Joes Shoe Shop";
-        //     $id2 = 2;
-        //     $test_store2 = new Store($id2, $name2);
-        //     $test_store2->save();
-		//
-		// 				//Act
-		// 				$test_store->delete();
-		// 				$result = Store::getAll();
-		//
-		// 				//Assert
-		// 				$this->assertEquals([$test_store2], $result);
-		// 		}
+        function testDelete()
+
+				{  //delete one Store
+					  //Arrange
+            $name = "Foot Locker";
+            $id = 1;
+            $test_store = new Store($id, $name);
+            $test_store->save();
+
+            $name2 = "Joes Shoe Shop";
+            $id2 = 2;
+            $test_store2 = new Store($id2, $name2);
+            $test_store2->save();
+
+						//Act
+						$test_store->delete();
+						$result = Store::getAll();
+
+						//Assert
+						$this->assertEquals([$test_store2], $result);
+				}
 
 }
 ?>
