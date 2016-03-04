@@ -1,0 +1,18 @@
+The app should do the following:
+
+Store Specs:
+1. It should be able to create a store and save to the database.
+2. It should list all stores.
+3. It should delete all stores and their brands.
+4. It should navigate to an individual store's page when you click on their name, and that page should list all of the brands for that store.
+5. It should update a single store.
+6. It should destroy a single store and their brands.
+
+
+Brand Specs:
+1. It should save a brand's name and information to the database.
+2. It should get all brands from the database for each store.
+4. It should navigate to an individual brand's page when you click on their name, and that page should list all of the stores that carry that brand. 
+Optional:
+3. It should update a single brand.
+4. It should destroy a single brand.
