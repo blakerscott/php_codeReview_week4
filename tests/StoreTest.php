@@ -203,7 +203,7 @@
 			$result = $test_store->getBrand();
 
             //Assert
-            $this->assertEquals('Foot Locker', $result);
+            $this->assertEquals('Nike', $result);
 
         }
 
@@ -220,7 +220,7 @@
             $test_brand2 = new Brand($id2, $name2);
             $test_brand2->save();
 
-            $name3 = "Vans";
+            $name3 = "Foot locker";
             $id3 = 2;
             $test_store = new Store($id3, $name3);
             $test_store->save();
