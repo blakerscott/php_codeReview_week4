@@ -1,0 +1,41 @@
+<table style='width:100%'>
+    <caption> <h2>Book Archive ( Click a title to edit a book )</h2> </caption>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Author(s)
+        </th>
+        <th>
+            Copies Total
+        </th>
+        <th>
+            Copies Available
+        </th>
+    </tr>
+    {% if books is not empty %}
+        {% for book in books %}
+            <tr>
+                <td>
+                    <a href='/book/{{book.getId}}'>{{ book.getTitle }}</a>
+                </td>
+                <td>
+                    {{book.getAuthor}}
+                </td>
+                <td>
+                    {{ book.getCopiesTotal }}
+                </td>
+                <td>
+                    {{ book.getCopiesAvailable }}
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>
+                    No books available
+            </td>
+        </tr>
+    {% endif %}
+</table>
