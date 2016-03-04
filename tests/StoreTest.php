@@ -47,7 +47,7 @@
 
 		{
             //Arrange
-						$name = "Foot Action";
+			$name = "Foot Action";
             $test_store = new Store($id = null, $name);
 
             //Act
@@ -142,7 +142,8 @@
 
             //Act
             $test_store->updateName('Johns Shoe Shop');
-            //Assert
+
+			//Assert
             $this->assertEquals('Johns Shoe Shop', $test_store->getName());
     	}
 
@@ -184,6 +185,54 @@
 
 			//Assert
 			$this->assertEquals([$test_store2], $result);
+		}
+
+		function testAddBrand()
+        {
+            //Arrange
+            $name = "Nike";
+            $test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+            $name = "Foot Locker";
+            $test_store = new Store($id = null, $name);
+            $test_store->save();
+
+            //Act
+            $test_store->addBrand($test_brand);
+			$result = $test_store->getBrand();
+
+            //Assert
+            $this->assertEquals('Foot Locker', $result);
+
+        }
+
+        function testGetBrands()
+        {
+            //Arrange
+            $name = "Nike";
+            $id = 1;
+            $test_brand = new Brand($id, $name);
+            $test_brand->save();
+
+            $name2 = "Adidas";
+            $id2 = 2;
+            $test_brand2 = new Brand($id2, $name2);
+            $test_brand2->save();
+
+            $name3 = "Vans";
+            $id3 = 2;
+            $test_store = new Store($id3, $name3);
+            $test_store->save();
+
+            //Act
+            $test_store->addBrand($test_brand);
+            $test_store->addBrand($test_brand2);
+			$result = $test_store->getBrand();
+
+            //Assert
+            $this->assertEquals('Nike, Adidas', $result);
+
 		}
 
 

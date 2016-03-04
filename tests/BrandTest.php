@@ -142,6 +142,7 @@
 
             //Act
             $test_brand->updateName('Johns Shoe Shop');
+
             //Assert
             $this->assertEquals('Johns Shoe Shop', $test_brand->getName());
     	}

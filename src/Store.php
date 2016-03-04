@@ -82,6 +82,29 @@
 
 		}
 
+        // function addBrand($new_brand)
+        // {
+        //     $GLOBALS['DB']->exec("INSERT INTO stores_brands (stores_id, brands_id) VALUES ({$new_brand->getId()}, {$this->getId()})");
+        // }
+        //
+        //
+        // function getBrand()
+        // {
+        //     $returned_stores = $GLOBALS['DB']->query("SELECT brands.* FROM stores
+        //         JOIN stores_brands ON (stores_brands.stores_id = stores.id)
+        //         JOIN brands ON (brands.id = stores_brands.brands_id)
+        //         WHERE stores.id = {$this->getId()};");
+		// 		$brands = array();
+        //     foreach($returned_brands as $brand) {
+        //         $name = $brand['name'];
+        //         $id = $brand['id'];
+        //         $new_brand = new Brand($id, $name);
+        //         array_push($brands, $new_brand->getName());
+        //     }
+		// 	$brands_implode = implode(', ', $brands);
+        //     return $brands_implode;
+        // }
+
 	}
 
 ?>
