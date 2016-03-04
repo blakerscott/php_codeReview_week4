@@ -91,6 +91,43 @@
             $this->assertEquals([$test_store], $result);
     	}
 
+		function testGetAll()
+		{
+
+            //Arrange
+            $name = "Nike";
+            $test_store = new Store($id = null, $name);
+            $test_store->save();
+
+            $name2 = "Adidas";
+            $test_store2 = new Store($id = null, $name2);
+            $test_store2->save();
+
+			//Act
+			$result = Store::getAll();
+
+			//Assert
+			$this->assertEquals([$test_store, $test_store2], $result);
+		}
+
+		function testDeleteAll()
+		{
+			//Arrange
+			$name = "Nike";
+            $test_store = new Store($id = null, $name);
+            $test_store->save();
+
+            $name2 = "Adidas";
+            $test_store2 = new Store($id = null, $name2);
+            $test_store2->save();
+
+			//Act
+			Store::deleteAll();
+			$result = Store::getAll();
+			//Assert
+			$this->assertEquals([], $result);
+		}
+
 
 		function testUpdateName()
 
@@ -147,5 +184,5 @@
 			$this->assertEquals([$test_store2], $result);
 		}
 
-	}	
+	}
 ?>
