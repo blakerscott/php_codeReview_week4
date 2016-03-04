@@ -82,6 +82,36 @@
 
 		}
 
+
+        // function addStore($new_store)
+        // {
+        //     $GLOBALS['DB']->exec("INSERT INTO brands_stores (store_id, brand_id) VALUES ({$new_store->getId()}, {$this->getId()})");
+        // }
+        //
+        //
+        // function getStore()
+        // {
+        //     $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands
+        //         JOIN brands_stores ON (brands_stores.brand_id = brands.id)
+        //         JOIN stores ON (stores.id = brands_stores.store_id)
+        //         WHERE brands.id = {$this->getId()};");
+		// 		$stores = array();
+        //     foreach($returned_stores as $store) {
+        //         $name = $store['name'];
+        //         $id = $store['id'];
+        //         $new_store = new Store($id, $name);
+        //         array_push($stores, $new_store->getName());
+        //     }
+		// 	$stores_implode = implode(', ', $stores);
+        //     return $stores_implode;
+        // }
+
+		// So what's going on inside this JOIN statement? It's happening in a few simple steps: We set our destination: stores.*. This means we want a complete stores table.
+// We set our starting point: brands. *We collect an id from the brands table (chosen at the end of the statement, after WHERE), and join it up with any matching rows in the brands_stores table.
+// We use the store_id from the matching rows in the brands_stores table to select rows from the stores table.
+// Finally, our statement returns a complete stores table, as a PDO, composed of only those rows which match our query.
+// This single query takes the place of a potentially huge number of other queries, and returns information in an extremely usable PDO format.
+
 	}
 
 ?>
