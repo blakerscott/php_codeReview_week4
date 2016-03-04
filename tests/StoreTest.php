@@ -19,15 +19,16 @@
 	{
 
 
-				protected function tearDown()
+		protected function tearDown()
 
-				{
-					Store::deleteAll();
-				}
+		{
+			Store::deleteAll();
+		}
 
 
-				function testGetName()
-        {
+		function testGetName()
+
+		{
             //Arrange
             $name = "Foot Action";
             $test_store = new Store($id = null, $name);
@@ -40,9 +41,9 @@
         }
 
 
-				function testSetName()
+		function testSetName()
 
-				{
+		{
             //Arrange
 						$name = "Foot Action";
             $test_store = new Store($id = null, $name);
@@ -58,7 +59,7 @@
 
         function testGetId()
 
-				{
+		{
             //Arrange
             $name = "Foot Locker";
             $id = 1;
@@ -73,9 +74,9 @@
         }
 
 
-				function testSave()
+		function testSave()
 
-				{
+		{
             //Arrange
             $name = "Foot Locker";
             $id = 1;
@@ -88,12 +89,12 @@
 
             //Assert
             $this->assertEquals([$test_store], $result);
-        }
+    	}
 
 
-				function testUpdateName()
+		function testUpdateName()
 
-			  {
+	  	{
             //Arrange
             $name = "Foot Locker";
             $id = 1;
@@ -104,10 +105,12 @@
             $test_store->updateName('Johns Shoe Shop');
             //Assert
             $this->assertEquals('Johns Shoe Shop', $test_store->getName());
-        }
+    	}
 
-        function testFind()
-        {
+
+		function testFind()
+
+		{
             //Arrange
             $name = "Foot Locker";
             $id = 1;
@@ -121,10 +124,11 @@
             $this->assertEquals($test_store, $result);
         }
 
-        function testDelete()
 
-				{  //delete one Store
-					  //Arrange
+		function testDelete()
+		//delete one Store
+		{
+			//Arrange
             $name = "Foot Locker";
             $id = 1;
             $test_store = new Store($id, $name);
@@ -135,13 +139,13 @@
             $test_store2 = new Store($id2, $name2);
             $test_store2->save();
 
-						//Act
-						$test_store->delete();
-						$result = Store::getAll();
+			//Act
+			$test_store->delete();
+			$result = Store::getAll();
 
-						//Assert
-						$this->assertEquals([$test_store2], $result);
-				}
+			//Assert
+			$this->assertEquals([$test_store2], $result);
+		}
 
-}
+	}	
 ?>
