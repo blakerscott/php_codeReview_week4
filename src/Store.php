@@ -60,7 +60,14 @@
             return $returned_stores;
 		}
 
-        static function deleteAll()
+		function updateName($new_name)
+
+        {
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
+		static function deleteAll()
 		//nuclear option for stores
         {
     		$GLOBALS['DB']->exec("DELETE FROM stores;");
