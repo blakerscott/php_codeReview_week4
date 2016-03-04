@@ -24,6 +24,7 @@
 
 		{
 			Store::deleteAll();
+			Brand::deleteAll();
 		}
 
 

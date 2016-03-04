@@ -24,6 +24,7 @@
 
 		{
 			Brand::deleteAll();
+            Store::deleteAll();
 		}
 
 
@@ -215,7 +216,7 @@
 
             $name3 = "Vans";
             $id3 = 2;
-            $test_brand = new Brand($id3, $name, $copies_total, $copies_available);
+            $test_brand = new Brand($id3, $name3);
             $test_brand->save();
 
             //Act
