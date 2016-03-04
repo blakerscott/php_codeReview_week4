@@ -1,14 +1,55 @@
 <?php
-	 class Store
-		{
-		private property;
 
-		 function getProperty(){
-			return $this->property;
-			}
+    class Store
+    {
+        private $id;
+        private $name;
 
-		function setProperty(){
-			$this->property = $property;
-		}
-	}
- ?>
+        function __construct($id = null, $name)
+        {
+            $this->id = $id;
+            $this->name = $name;
+        }
+
+        function setName($new_name)
+        {
+            $this->name = (string) $new_name;
+        }
+
+        function getName()
+        {
+            return $this->name;
+        }
+
+        function getId()
+        {
+            return $this->id;
+        }
+
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores (name)
+            VALUES ('{$this->getName()}');
+            ");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        static function getAll()
+
+        {//gets every single store
+    			$returned_stores = array();
+    			$all_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
+    			foreach ($all_stores as $store) {
+    				$id = $store['id'];
+    				$name = $store['name'];
+    				$new_store = new Store($id, $name);
+                    array_push($returned_stores, $new_store);
+    			}
+                return $returned_stores;
+    		}
+
+        static function deleteAll()
+
+        {
+    			$GLOBALS['DB']->exec("DELETE FROM stores;");
+    		}
