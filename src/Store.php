@@ -1,5 +1,5 @@
-<?php 
-	 class Name
+<?php
+	 class Store
 		{
 		private property;
 
