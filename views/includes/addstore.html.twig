@@ -1,0 +1,10 @@
+<form class="form-group" action="/admin_add_store" method="post">
+    <h2>Add an Store</h2>
+    <label for='store'>Add Store Name (Last Name First Name):</label>
+    <input class="form-control" id='store' name='store' type='text'><br>
+    <button class="btn btn-lg btn-primary"type='submit'>Add Store</button>
+</form>
+<form class="form-group" action="/delete_all_stores" method="post">
+    <input value="delete" type='hidden' name='_method'>
+    <button type="submit" name="button" class="btn btn-lg btn-warning">Warning: This button will nuke all stores!</button>
+</form>
