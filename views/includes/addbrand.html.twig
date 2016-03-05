@@ -1,0 +1,10 @@
+<form class="form-group" action="/admin_add_brand" method="post">
+    <h2>Add an Author</h2>
+    <label for='brand'>Add Author Name (Last Name First Name):</label>
+    <input class="form-control" id='brand' name='brand' type='text'><br>
+    <button class="btn btn-lg btn-primary"type='submit'>Add Author</button>
+</form>
+<form class="form-group" action="/delete_all_brands" method="post">
+    <input value="delete" type='hidden' name='_method'>
+    <button type="submit" name="button" class="btn btn-lg btn-warning">Warning: This button will nuke all brands!</button>
+</form>
