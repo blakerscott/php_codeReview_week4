@@ -4,7 +4,7 @@
 
 ### Description
 
-This is an application for a hair salon.  It provides a graphical user interface to allow the salon owner to create, read, update and destroy a record for each stylist at the salon.  It also allows the owner to create, read, update and destroy a record for each of the stylist's clients.
+This is an application for a shoe store database.  It provides a graphical user interface to allow a user create, read, update and destroy a record for each shoe store.  The user can also create and read shoe brands.  It also allows the user to take advantage of a many to many relationship between stores and brands.
 
 ### Known Bugs
 
@@ -69,7 +69,7 @@ mysql> show tables;
 +-----------------+
 3 rows in set (0.00 sec)
 
-mysql> 
+mysql>
 
 
 ### Setup

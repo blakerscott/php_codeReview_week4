@@ -4,7 +4,7 @@
     require_once __DIR__."/../src/Brand.php";
 
 
-    $server = 'mysql:host=localhost;dbname=library';
+    $server = 'mysql:host=localhost;dbname=shoes';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -52,7 +52,7 @@
         //Route for when you click on update store button
         $new_name = $_POST['name'];
         $store = Store::find($id);
-        $store->updateTitle($new_name);
+        $store->updateName($new_name);
         return $app['twig']->render('admin.html.twig', array(
             'store' => $store,
             'stores' => Store::getAll(),
@@ -65,7 +65,7 @@
     $app->post("/admin_add_store", function() use ($app) {
         //Add a store to the database
         $name = $_POST['name'];
-        $store = new Store($id = null, $name;
+        $store = new Store($id = null, $name);
         $store->save();
         return $app['twig']->render('admin.html.twig', array(
             'brands' => Brand::getAll(),

@@ -1,5 +1,5 @@
 <table style='width:100%'>
-    <caption> <h2>List of Brands ( Click an brand to edit them )</h2> </caption>
+    <caption> <h2>List of Brands</h2> </caption>
     <tr>
         <th>
             Brand
@@ -9,7 +9,7 @@
         {% for brand in brands %}
             <tr>
                 <td>
-                    <a href='/brand/{{brand.getId}}'>{{ brand.getName}}</a>
+                    <h4>{{ brand.getName}}</h4>
                 </td>
             </tr>
         {% endfor %}
