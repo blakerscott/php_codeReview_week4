@@ -1,0 +1,23 @@
+<table style='width:100%'>
+    <caption> <h2>List of Brands ( Click an brand to edit them )</h2> </caption>
+    <tr>
+        <th>
+            Brand
+        </th>
+    </tr>
+    {% if brands is not empty %}
+        {% for brand in brands %}
+            <tr>
+                <td>
+                    <a href='/brand/{{brand.getId}}'>{{ brand.getName}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>
+                    No brands available
+            </td>
+        </tr>
+    {% endif %}
+</table>

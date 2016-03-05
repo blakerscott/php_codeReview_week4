@@ -1,0 +1,29 @@
+<table style='width:100%'>
+    <caption> <h2>Store List ( Click a store to edit )</h2> </caption>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Brand(s)
+        </th>
+    </tr>
+    {% if stores is not empty %}
+        {% for store in stores %}
+            <tr>
+                <td>
+                    <a href='/store/{{store.getId}}'>{{ store.getName }}</a>
+                </td>
+                <td>
+                    {{store.getBrand}}
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>
+                    No stores listed
+            </td>
+        </tr>
+    {% endif %}
+</table>

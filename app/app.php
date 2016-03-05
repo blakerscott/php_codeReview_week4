@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/Brand.php";
     require_once __DIR__."/../src/Store.php";
+    require_once __DIR__."/../src/Brand.php";
 
 
     $server = 'mysql:host=localhost;dbname=library';
@@ -27,94 +27,47 @@
         return $app['twig']->render('index.html.twig');
     });
 
-    //////Brands/////////////
+    //////Stores/////////////
     ////////////////////////
 
     $app->get("/admin", function() use ($app) {
-        //Get all brands
-        return $app['twig']->render('admin.html.twig', array(
-            'brands' => Brand::getAll(),
-            'stores' => Store::getAll()
-        ));
-    });
-
-    $app->get("/brand/{id}", function($id) use ($app) {
-        //Navigate to a specific edit/update page
-        $brand = Brand::find($id);
-        var_dump($brand->getStore());
-        return $app['twig']->render('editbrand.html.twig', array(
-            'stores' => Store::getAll(),
-            'brand' => $brand
-        ));
-    });
-
-    $app->patch("/update_brand/{id}", function($id) use ($app) {
-        //Route for when you click on update brand button
-        $new_title = $_POST['title'];
-        $brand = Brand::find($id);
-        $brand->updateTitle($new_title);
-        return $app['twig']->render('admin.html.twig', array(
-            'brand' => $brand,
-            'brands' => Brand::getAll(),
-            'stores' => Store::getAll()
-        ));
-    });
-
-
-
-    $app->post("/admin_add_brand", function() use ($app) {
-        //Add a brand to the database
-        $title = $_POST['title'];
-        $copies_total = $_POST['copies_total'];
-        $copies_available = $_POST['copies_total'];
-        $brand = new Brand($id = null, $title, $copies_total, $copies_available);
-        $brand->save();
+        //Get all stores
         return $app['twig']->render('admin.html.twig', array(
             'stores' => Store::getAll(),
             'brands' => Brand::getAll()
         ));
     });
 
-    $app->delete('/delete_all_brands', function() use ($app) {
-		//Nuke all brands
-		Brand::deleteAll();
-		return $app['twig']->render('admin.html.twig', array(
-            'stores' => Store::getAll(),
-			'brands' => Brand::getAll()
-	  ));
-	});
-
-    $app->delete('/delete_this_brand/{id}', function($id) use ($app) {
-		//Delete a single brand
-        $brand = Brand::find($id);
-        $brand->delete();
-		return $app['twig']->render('admin.html.twig', array(
-            'stores' => Store::getAll(),
-			'brands' => Brand::getAll()
-	  ));
-	});
-
-    //////Store/////////////
-    ////////////////////////
-
-    $app->post('/admin_add_store', function() use ($app) {
-        //adds an store Yay
-        $name = $_POST['store'];
-        $store = new Store($id = null, $name);
-        $store->save();
-        return $app['twig']->render('admin.html.twig', array(
+    $app->get("/store/{id}", function($id) use ($app) {
+        //Navigate to a specific edit/update page
+        $store = Store::find($id);
+        var_dump($store->getBrand());
+        return $app['twig']->render('editstore.html.twig', array(
             'brands' => Brand::getAll(),
-            'stores' => Store::getAll()
+            'store' => $store
         ));
     });
 
-    $app->post('/add_store_to_brand', function() use ($app) {
-        //adds store to individual brand
-        $store = Store::find($_POST['store_id']);
-        $brand = Brand::find($_POST['brand_id']);
-        $brand->addStore($store);
+    $app->patch("/update_store/{id}", function($id) use ($app) {
+        //Route for when you click on update store button
+        $new_name = $_POST['name'];
+        $store = Store::find($id);
+        $store->updateTitle($new_name);
         return $app['twig']->render('admin.html.twig', array(
-            'brand' => $brand,
+            'store' => $store,
+            'stores' => Store::getAll(),
+            'brands' => Brand::getAll()
+        ));
+    });
+
+
+
+    $app->post("/admin_add_store", function() use ($app) {
+        //Add a store to the database
+        $name = $_POST['name'];
+        $store = new Store($id = null, $name;
+        $store->save();
+        return $app['twig']->render('admin.html.twig', array(
             'brands' => Brand::getAll(),
             'stores' => Store::getAll()
         ));
@@ -124,8 +77,53 @@
 		//Nuke all stores
 		Store::deleteAll();
 		return $app['twig']->render('admin.html.twig', array(
+            'brands' => Brand::getAll(),
+			'stores' => Store::getAll()
+	  ));
+	});
+
+    $app->delete('/delete_this_store/{id}', function($id) use ($app) {
+		//Delete a single store
+        $store = Store::find($id);
+        $store->delete();
+		return $app['twig']->render('admin.html.twig', array(
+            'brands' => Brand::getAll(),
+			'stores' => Store::getAll()
+	  ));
+	});
+
+    //////Brand/////////////
+    ////////////////////////
+
+    $app->post('/admin_add_brand', function() use ($app) {
+        //adds an brand Yay
+        $name = $_POST['brand'];
+        $brand = new Brand($id = null, $name);
+        $brand->save();
+        return $app['twig']->render('admin.html.twig', array(
             'stores' => Store::getAll(),
-			'brands' => Brand::getAll()
+            'brands' => Brand::getAll()
+        ));
+    });
+
+    $app->post('/add_brand_to_store', function() use ($app) {
+        //adds brand to individual store
+        $brand = Brand::find($_POST['brand_id']);
+        $store = Store::find($_POST['store_id']);
+        $store->addBrand($brand);
+        return $app['twig']->render('admin.html.twig', array(
+            'store' => $store,
+            'stores' => Store::getAll(),
+            'brands' => Brand::getAll()
+        ));
+    });
+
+    $app->delete('/delete_all_brands', function() use ($app) {
+		//Nuke all brands
+		Brand::deleteAll();
+		return $app['twig']->render('admin.html.twig', array(
+            'brands' => Brand::getAll(),
+			'stores' => Store::getAll()
 	  ));
 	});
 
